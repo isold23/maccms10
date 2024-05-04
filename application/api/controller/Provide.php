@@ -3,6 +3,12 @@ namespace app\api\controller;
 use think\Controller;
 use think\Cache;
 
+$origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : '';
+$allow_origin = array('http://tv.hzdianyue.com','http://hzdianyue.com');
+if(in_array($origin, $allow_origin)) {
+    header('Access-Control-Allow-Origin:'.$origin);
+}
+
 class Provide extends Base
 {
     var $_param;
